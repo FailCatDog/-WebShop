@@ -45,7 +45,12 @@ export default {
   },
   methods: {
     handleLinkClick(link) {
-      this.activeLink = link
+      if (link === 'main'){
+        this.activeLink = 'home'
+      }else {
+        this.activeLink = link
+      }
+      
       if (link === 'category') return
       this.$router.push(`/home/${link}`)
       
