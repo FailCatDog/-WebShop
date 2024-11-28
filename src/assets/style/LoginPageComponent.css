@@ -1,0 +1,114 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-container {
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex: 8;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    height: 45vh;
+    background-color: #ffeef8;
+    /* 修改为更加柔和的浅粉色背景 */
+    margin: 0;
+    box-shadow: -1px 0px 25px 0px rgba(255, 192, 203, 0.5);
+    /* 浅粉色阴影 */
+    padding: 2.25em;
+    box-sizing: border-box;
+    border: solid 1px #FF69B4;
+    /* 粉色边框 */
+    border-radius: 0.5em;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.form .Group {
+    margin-bottom: 2em;
+}
+
+.form label {
+    margin: 0 0 10px;
+    display: block;
+    font-size: 1.25em;
+    color: #FF69B4;
+    /* 粉色文字 */
+    font-weight: 600;
+    font-family: inherit;
+}
+
+.form input {
+    padding: 0.3em 0.5em 0.4em;
+    background-color: #fff0f5;
+    /* 浅粉色背景 */
+    border: solid 2px #FF69B4;
+    /* 粉色边框 */
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    font-size: 1.3em;
+    color: #353538;
+    /* 文字颜色 */
+    font-weight: 600;
+    font-family: inherit;
+    transition: box-shadow 0.2s linear, border-color 0.25s ease-out;
+}
+
+.form input:focus {
+    outline: none;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffe4e1;
+    /* 较深的浅粉色背景 */
+    border: solid 2px #FF1493;
+    /* 深粉色边框 */
+}
+
+.form input::placeholder {
+    color: #FF69B4;
+    /* 粉色占位符 */
+}
+
+.form .btn {
+    margin: 0;
+    padding: 0.5em;
+    background-color: #FF1493;
+    /* 粉色按钮背景 */
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: none;
+    width: 100%;
+    height: 50px;
+    font-size: 1.4em;
+    color: #FFF;
+    /* 按钮字体颜色 */
+    font-weight: 600;
+    font-family: inherit;
+    transition: transform 0.1s ease-in-out, background-color 0.2s ease-out;
+}
+
+.form .btn:hover {
+    cursor: pointer;
+    background-color: #FF69B4;
+    /* 橙色按钮悬停效果 */
+}
+
+.form .btn:active {
+    transform: scale(0.98);
+}
