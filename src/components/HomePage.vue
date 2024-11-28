@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- 用来做背景，让订单和主页切换的时候不会突然拉长 -->
     <div class="bg" />
     <Nav-bar v-if="!isLoading" @updateDrawer="updateDrawer"></Nav-bar>
     <Skeleton v-if="isLoading"></Skeleton>
@@ -47,6 +48,7 @@ export default {
     }
   },
   methods: {
+    // 打开购物车抽屉组件
     updateDrawer () {
       const userId = this.$store.getters['userStore/getToken']
       if (userId === undefined){
@@ -57,11 +59,14 @@ export default {
       this.$router.push({ name: 'Cart' })
       this.drawer = true
     },
+
+    // 关闭购物车
     handleClose() {
       this.$router.push({ name: 'Home' });
     }
   },
   mounted () {
+    // 挂载后进行骨架屏展示
     setTimeout(() => {
       this.isLoading = false
     }, 2000);
