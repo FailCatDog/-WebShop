@@ -115,6 +115,8 @@ export default {
         closeModal() {
             this.$emit('close'); // 触发关闭事件
         },
+
+        // 添加到购物车
         async addToCart() {
             const userId = this.$store.getters['userStore/getToken']
             const { data } = await reqAddCart(userId, this.selectedProduct, this.number)

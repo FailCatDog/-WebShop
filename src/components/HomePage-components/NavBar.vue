@@ -44,6 +44,7 @@ export default {
     }
   },
   methods: {
+    // 处理标签的点击
     handleLinkClick(link) {
       if (link === 'main'){
         this.activeLink = 'home'
@@ -55,19 +56,22 @@ export default {
       this.$router.push(`/home/${link}`)
       
     },
+
+    // 跳转到购物车
     goToShoppingCart() {
       this.$emit('updateDrawer')
     },
+
+    // 获取购物车的数据
     async getCartList() {
       const userId = this.$store.getters['userStore/getToken']
       const { data } = await reqCartList(userId)
       this.$store.commit('cartStore/setCartList', data)
     },
-    clickOrder() {
-      this.handleLinkClick('order')
-    }
   },
+
   mounted() {
+    // 挂载的时候获取购物车的数据
     this.getCartList()
   }
 }
@@ -150,12 +154,13 @@ export default {
     writing-mode: horizontal-tb;
 }
 
+/* 鼠标悬停伪类 */
 .link-item:hover {
     background-color: #e7e6e0; 
 }
 
 .link-item.active {
-    background-color: transparent;
+    background-color: transparent;  /* 设置选中的时候背景色为透明 */
 }
 
 .link-item.active::after {
@@ -199,6 +204,7 @@ export default {
     transform: scale(1.2);
 }
 
+/* 响应式 */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;

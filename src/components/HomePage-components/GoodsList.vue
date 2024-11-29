@@ -7,18 +7,18 @@
             <i class="icon-font icon-tianjia add-icon" @click.stop="addToCart(product)"></i> <!-- 阻止点击事件传播 -->
         </div>
         
-        <!-- 模态框 -->
+        <!-- 模态框，显示商品详情 -->
         <Goods-info-modal v-if="isModalVisible" :selectedProduct="selectedProduct" :isVisible="isModalVisible" @close="isModalVisible = false"  />
     </div>
 </template>
 
 <style scoped>
 .good-list {
-  min-height: 100vh;
+  min-height: 100vh; /* 页面最小高度 */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
   grid-auto-rows: minmax(20vh, 30vh);
-  gap: 10px;
+  gap: 10px; /* 网格的间距 */
   flex: 0.6;
   padding: 16px;
 }
@@ -95,16 +95,20 @@ export default {
         GoodsInfoModal
     },
     methods: {
+
+        // 获取商品列表并存储到vuex和localStore中
         async getAndSaveGoodsList() {      
             // 先请求数据
             const { data } = await reqGoodsList()
 
-            // 存储到vuex
-            // this.products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : []
+            // 存储到vuex和localStore中
+            this.products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : []
             this.$store.commit('goodStore/setGoodsList', data)
 
             this.products = data
         },
+
+        // 添加商品到购物车
         async addToCart(product) {
             if (!this.$store.getters['userStore/getToken']) {
                 this.$message.error('请先登录')
@@ -115,6 +119,8 @@ export default {
             this.$store.commit('cartStore/setCartList', data)
             this.$message.success('添加成功')
         },
+
+        // 显示商品详情
         showModal(product) {
             this.selectedProduct = product
             this.isModalVisible = true

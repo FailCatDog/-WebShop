@@ -2,16 +2,21 @@
   <div class="container">
     <!-- 用来做背景，让订单和主页切换的时候不会突然拉长 -->
     <div class="bg" />
+
+    <!-- 导航栏 -->
     <Nav-bar v-if="!isLoading" @updateDrawer="updateDrawer"></Nav-bar>
+    
+    <!-- 骨架屏（虽然是假的） -->
     <Skeleton v-if="isLoading"></Skeleton>
 
     <transition name="fade" mode="out-in">
-      <!-- <component :is="currentComponent" v-if="!isLoading"></component> -->
+      <!-- 把组件写成二级路由 -->
       <router-view v-if="!isLoading"></router-view>
     </transition>
     
     <Footer v-if="!isLoading"></Footer>
     
+    <!-- element的抽屉，购物车组件 -->
     <el-drawer title="购物车" :visible.sync="drawer" :with-header="true" @close="handleClose">
       <ShoppingCart></ShoppingCart>
     </el-drawer>
@@ -43,11 +48,12 @@ export default {
   },
   data () {
     return {
-      isLoading: true,
-      drawer: false,
+      isLoading: true,  // 默认最初加载的时候骨架屏展示
+      drawer: false,  // 默认不展示购物车
     }
   },
   methods: {
+
     // 打开购物车抽屉组件
     updateDrawer () {
       const userId = this.$store.getters['userStore/getToken']
@@ -65,7 +71,9 @@ export default {
       this.$router.push({ name: 'Home' });
     }
   },
+
   mounted () {
+
     // 挂载后进行骨架屏展示
     setTimeout(() => {
       this.isLoading = false
@@ -88,6 +96,7 @@ export default {
   z-index: -1;
 }
 
+/* 深层渲染element组件，穿透scoped */
 .container >>> .el-drawer span {
   position: relative;
   left: 5px;
