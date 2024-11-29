@@ -133,7 +133,7 @@
     padding: 15px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* 两端对齐 */
     align-items: center;
 }
 
@@ -186,36 +186,52 @@ export default {
         cartItems() {
             return this.$store.getters['cartStore/getCartList'];
         },
+
+        // 计算总价
         totalPrice() {
             return this.cartItems
                 .filter(item => item.selected)
                 .reduce((total, item) => total + item.price * item.num, 0)
                 .toFixed(2);
         },
+
+        // 计算全选状态
         selectALLStatus() {
             return this.cartItems.every(item => item.selected); 
         }
     },
     methods: {
+
+        // 点击+号
         increaseQuantity(item) {
             item.num++;
         },
+
+        // 点击-号
         decreaseQuantity(item) {
             if (item.num > 1) {
                 item.num--;
             }
         },
+
+        // 结算
         async checkout() {
             const orderList = this.cartItems.filter(item => item.selected).map(item => item.cardid).join(',')
             const { data } = await reqSubmitOrder(this.$store.getters['userStore/getToken'], orderList);
+
+            // 把数据上传到vuex中，并清空购物车
             this.$store.commit('orderStore/setOrderList',data)
             this.$store.commit('cartStore/clearCart');
         },
+
+        // 删除购物车商品
         async deleteCartItem(item) {
             const { data } = await reqDeleteCart(this.$store.getters['userStore/getToken'], item.cardid);
             this.$store.commit('cartStore/setCartList', data);
             this.$message.success('删除成功');
         },
+
+        // 全选按钮
         goodsSelectAll(value) {
             this.cartItems.forEach(item => {
                 item.selected = value; // 根据全选状态更新每个商品的选择状态
