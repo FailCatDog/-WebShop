@@ -4,6 +4,7 @@
             <h1>Register Page</h1>
         </div>
         <div class="login-form">
+            <!-- prevent阻止表单默认提交 -->
             <form @submit.prevent="register" class="form">
                 <div class="Group">
                     <label for="Username">Username</label>
@@ -36,14 +37,17 @@ export default {
 
         if (status === 200 && statusText === 'OK') {
           if (data === 'isexist') {
-            alert('该用户已存在！')
+            this.$message.error('该用户已存在！')
+            // 重置用户名和密码
             this.username = ''
             this.password = ''
         } else {
+            // 页面刷新
             window.location.reload();
           }
         }
 
+        // componentKey 的作用是在Vue组件中强制渲染组件，当其值发生变化的时候，Vue会认为这是新的组件实例，从而触发组件的重新渲染。
         this.componentKey++
       }
     }

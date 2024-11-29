@@ -59,7 +59,7 @@ export default {
     },
     data() {
         return {
-            isLoginActive: true
+            isLoginActive: true // 判断展示哪个组件
         };
     },
     computed: {

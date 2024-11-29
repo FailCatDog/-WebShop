@@ -38,6 +38,8 @@ export default {
           this.$message.error('登录失败，请检查用户名或密码')
         } else {
           this.$message.success('登录成功')
+        
+          // 登录成功后，将token存入store和localStorage，并跳转到首页
           this.$store.commit('userStore/setToken', data)
           localStorage.setItem('token', data)
           this.$router.push('/')
