@@ -39,6 +39,7 @@
 
 .slide-box {
     position: absolute;
+    /* background-image: url('/boxImg.png'); */
     top: 0;
     right: 50%;  /* 使slide-box在右侧*/
     bottom: 0; /* 确保高度与父元素相同 */
@@ -56,6 +57,7 @@
 
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
 .slide-box.active {
@@ -70,41 +72,10 @@
     transform: translateX(100%);
 }
 
-.slide-box {
-    position: absolute;
-    top: 0;
-    right: 50%;
-    /* 使slide-box在右侧*/
-    bottom: 0;
-    /* 确保高度与父元素相同 */
-    z-index: 1;
-    /* 确保slide-box在上面 */
-
-    width: 50%;
-    border-radius: 30px;
-    transition: transform 1s ease;
-
-    backdrop-filter: blur(5px);
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    justify-content: center;
-}
-
-.slide-box.active {
-    transform: translateX(0);
-}
-
-.slide-box.left {
-    transform: translateX(0%);
-}
-
-.slide-box.right {
-    transform: translateX(100%);
-}
+/* .slide-box img {
+    width: 100%;
+    overflow: hidden;
+} */
 
 .slide-btn {
     display: inline-block;
@@ -143,12 +114,10 @@
 
 .slide-btn.slide-left {
     transform: translateX(-20px);
-    /* 根据需要调整 */
 }
 
 .slide-btn.slide-right {
     transform: translateX(20px);
-    /* 根据需要调整 */
 }
 
 /* .slide-box img {
