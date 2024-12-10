@@ -8,7 +8,7 @@
     
     <!-- 骨架屏（虽然是假的） -->
     <Skeleton v-if="isLoading"></Skeleton>
-
+    
     <transition name="fade" mode="out-in">
       <!-- 把组件写成二级路由 -->
       <router-view v-if="!isLoading"></router-view>
