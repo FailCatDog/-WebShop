@@ -24,7 +24,7 @@ export default {
         // 获取商品数据
         getProducts() {
             const storedProducts = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
-            this.products = storedProducts.slice(0, 5);  // 只取前5个产品
+            this.products = storedProducts.slice(5, 10);  // 只取后5个产品
         }
     },
     created() {
