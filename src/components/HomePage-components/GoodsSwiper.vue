@@ -38,7 +38,7 @@ export default {
     display: flex;
     flex: 1;
     /* height: 100%; */
-    height: 40vh;
+    height: 70vh;
     /* padding: 15px; */
     margin: 15px;
     /* border: 2px solid #000000; */
@@ -61,7 +61,7 @@ export default {
 }
 
 .carousel-item {
-    height: 40vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,8 +69,9 @@ export default {
 
 .carousel-item img {
     width: 100%;
-    height: 40vh;
-    object-fit: cover;
+    height: 70vh;
+    /* object-fit: cover; */
+    object-fit: contain;    /* 图片完整显示 */
 }
 
  /* 指示器 */
