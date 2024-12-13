@@ -23,7 +23,7 @@
       <Search-bar></Search-bar>
     </div>
     <div class="user-info">
-      <i class="icon-font icon-wode"></i>
+      <i class="icon-font icon-wode cart-icon" @click="isLogin"></i>
       <i class="icon-font icon-gouwuche cart-icon" @click="goToShoppingCart"></i>
     </div>
   </div>
@@ -68,6 +68,12 @@ export default {
       const { data } = await reqCartList(userId)
       this.$store.commit('cartStore/setCartList', data)
     },
+
+    isLogin() {
+      if(!localStorage.getItem('token')){
+        this.$router.push('/login')
+      }
+    }
   },
 
   mounted() {
