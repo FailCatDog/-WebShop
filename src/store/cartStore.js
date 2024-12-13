@@ -13,8 +13,10 @@ export default {
         setCartList(state, cart) {
             state.cart = cart
         },
-        clearCart(state) {
-            state.cart = []
+        clearCart(state, orderList) {
+            // state.cart = []
+            const idsToRemove = orderList.split(',').map(id => id.trim())
+            state.cart = state.cart.filter(item => !idsToRemove.includes(item.cardid))
         }
     },
     getters: {

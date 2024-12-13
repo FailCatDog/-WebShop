@@ -69,6 +69,7 @@ export default {
       this.$store.commit('cartStore/setCartList', data)
     },
 
+    // 判断是否登录
     isLogin() {
       if(!localStorage.getItem('token')){
         this.$router.push('/login')

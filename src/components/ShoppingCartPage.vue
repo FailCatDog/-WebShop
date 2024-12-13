@@ -221,7 +221,7 @@ export default {
 
             // 把数据上传到vuex中，并清空购物车
             this.$store.commit('orderStore/setOrderList',data)
-            this.$store.commit('cartStore/clearCart');
+            this.$store.commit('cartStore/clearCart',orderList)
         },
 
         // 删除购物车商品
