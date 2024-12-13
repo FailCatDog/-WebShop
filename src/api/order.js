@@ -6,7 +6,11 @@ import http from './request'
  * @returns 
  */
 export function reqSubmitOrder(userId, cartList) {
-    return http.post(`/order/addCastOrder?userId=${userId}&cartList=${cartList}`)
+    const formData = new FormData()
+    formData.append('userId', userId)
+    formData.append('cartList', cartList)
+    // return http.post(`/order/addCastOrder?userId=${userId}&cartList=${cartList}`)
+    return http.post('/order/addCastOrder', formData)
 }
 
 /**
