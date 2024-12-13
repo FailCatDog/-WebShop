@@ -62,16 +62,17 @@ export default {
 
 .carousel-item {
     height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+     background-color: #ffffff; /* 设置背景颜色，让图片看起来对齐 */
 }
 
 .carousel-item img {
     width: 100%;
-    height: 70vh;
+    height: 100%;
     /* object-fit: cover; */
-    object-fit: contain;    /* 图片完整显示 */
+    object-fit: contain;    
 }
 
  /* 指示器 */
