@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2023 桂林电子科技大学花江慧谷1205实验室. 保留所有权利.</p>
+      <p>&copy; 2023 桂林电子科技大学. 保留所有权利.</p>
     </div>
   </footer>
 </template>
