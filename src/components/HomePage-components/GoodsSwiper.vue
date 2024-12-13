@@ -23,8 +23,8 @@ export default {
     methods: {
         // 获取商品数据
         getProducts() {
-            const storedProducts = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
-            this.products = storedProducts.slice(5, 10);  // 只取后5个产品
+            const storedProducts = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : []
+            this.products = storedProducts.slice(4, 9) // 切片
         }
     },
     created() {
@@ -80,5 +80,10 @@ export default {
     width: 30px; 
     height: 10px;
     margin: 0 4px;
+}
+
+:deep(.el-carousel__button){
+    height: 15px;
+    background-color: rgb(66, 58, 58);
 }
 </style>
