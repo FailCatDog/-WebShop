@@ -76,10 +76,21 @@ export default {
       }
     }
   },
-
+  
+  // 页面加载完成
   mounted() {
     // 挂载的时候获取购物车的数据
     this.getCartList()
+
+    // 根据当前路由设置 activeLink
+    const currentPath = this.$route.path; // 获取当前路径
+    if (currentPath.includes('category')) {
+      this.activeLink = 'category';
+    } else if (currentPath.includes('order')) {
+      this.activeLink = 'order';
+    } else {
+      this.activeLink = 'home';
+    }
   }
 }
 </script>
